@@ -49,7 +49,7 @@ class Store:
             print(f"Order not found, please we need {order.name} items")
 
     def update_stocks_store(self, item_n):
-
+        print("nice")
 
 
 
