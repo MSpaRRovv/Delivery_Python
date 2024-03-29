@@ -50,6 +50,7 @@ class Store:
 
     def update_stocks_store(self, item_n):
         print("nice")
+        print(5)
 
 
 
