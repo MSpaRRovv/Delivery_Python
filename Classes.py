@@ -1,9 +1,10 @@
+from dataclasses import dataclass
+@dataclass
 class Item:
-    def __init__(self, id_s, provider_id, name, price):
-        self.id_s = id_s
-        self.provider_id = provider_id
-        self.name = name
-        self.price = price
+        id_s :int
+        provider_id: int
+        name: str
+        price: float
 
 
 class Provider:
