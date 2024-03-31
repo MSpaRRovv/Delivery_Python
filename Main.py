@@ -1,4 +1,5 @@
-from Classes import Item, Store
+from Item import Item
+from Store import Store
 
 item1 = Item(1, 1144234, 'banana', 50)
 item2 = Item(2, 234534, 'milk', 36)
