@@ -1,58 +1,61 @@
 from dataclasses import dataclass
+
+
 @dataclass
 class Item:
-        id_s :int
-        provider_id: int
-        name: str
-        price: float
+    id_s: int
+    provider_id: int
+    name: str
+    price: float
+
+    def __hash__(self):
+        return hash((self.id_s, self.provider_id, self.name, self.price))
 
 
 class Provider:
-    def __init__(self, id_p, name):
+    def __init__(self, id_p: int, name: str):
         self.id_p = id_p
         self.name = name
-        self.items_provider = {}
+        self.items = {}
 
-    def add_item_provider(self, item, count):
-        key = item.provider_id
-        if key in self.items_provider:
-            self.items_provider[key] += count
-        else:
-            self.items_provider[key] = count
+    def send_order(self):
+        pass
 
-    def send_order(self, item_n):
-        if item_n.provider_id in self.items_provider:
-            print("Otpravlen")
-
-    def update_stocks_provider(self, items_n):
-        add_item_provider = items_n.add_item_provider
-        del self.items_provider[items_n.provider_id]
+    def update_stocks(self):
+        pass
 
 
-
-
-
-class Store:
-    def __init__(self, name, store_id):
+class Worker:
+    def __init__(self, id_w: int, name: str):
+        self.id_w = id_w
         self.name = name
-        self.store_id = store_id
-        self.items_store = {}
 
-    def add_item_store(self, item, count):
-        key = item.id_s
-        if key in self.items_store:
-            self.items_store[key] += count
-        else:
-            self.items_store[key] = count
+    def get_order(self):
+        pass
 
-    def send_request(self, order):
-        if order not in self.items_store:
-            print(f"Order not found, please we need {order.name} items")
+    def get_shift(self):
+        pass
 
-    def update_stocks_store(self, item_n):
-        print("nice")
-        print(5)
+
+class Courier(Worker):
+    pass
+
+
+class Storekeeper(Worker):
+    pass
 
 
 
+@dataclass
+class Order:
+    order_id: int
+    status: str
+    items: list
+    created_at: str
+    delivered_at: str
+    assembler: str
+    delivery_person: str
 
+
+class User:
+    pass
