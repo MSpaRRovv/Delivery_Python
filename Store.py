@@ -1,3 +1,6 @@
+from Order import Order
+
+
 class Store:
     def __init__(self, id_s, name, coordinates):
         self.__id_s = id_s
@@ -33,31 +36,13 @@ class Store:
         self.__items_store[item] = count
 
     def send_request(self, item, provider, count):
-        if item in self.__items_store:
-            if item in provider.get_item_provider():
-                provider_quantity = provider.get_item_provider()[item]
-                if provider_quantity >= count:
-                    provider.get_item_provider()[item] -= count
-                    self.__items_store[item] += count
-                    print(f"Товар {item.name} добавлен в магазин в количестве {count}")
-                else:
-                    print(f"Ошибка: Недостаточное количество товара {item.name} у поставщика")
-            else:
-                print(f"Ошибка: Товар {item.name} отсутствует у поставщика")
-        else:
-            print(f"Ошибка: Товар {item.name} отсутствует в магазине")
+        if item not in self.__items_store:
+            print(f"Запрашиваем товар {item.name} у поставщика в кол-ве {count}")
+            provider.send_order(item, count)
 
-    def update_stocks_store(self, item, count):
-        if item in self.__items_store:
-            self.__items_store[item] += count
-            print(f"Обновлено количество товара {item.name} в магазине на {count}")
-        else:
-            print(f"Ошибка: Товар {item.name} не найден в магазине")
-
-
-
-    def take_order(self):
-        pass
+    def take_order(self, order):
+        order.status = "processing"
+        print(f"Статус заказа: {order.status}")
 
     def set_storekeeper(self):
         pass
