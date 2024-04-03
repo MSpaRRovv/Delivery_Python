@@ -1,8 +1,14 @@
+from Order import Order
+import uuid
+
+
 class Store:
-    def __init__(self, id_s, name, coordinates):
-        self.__id_s = id_s
+    def __init__(self, name):
+        self.__id_s = str(uuid.uuid4())
         self.__name = name
-        self.__coordinates = coordinates
+        self.__x = input("Введите координаты магазина X: ")
+        self.__y = input("Введите координаты магазина Y: ")
+        self.__coordinates = (self.__x, self.__y)
         self.__items_store = {}
 
     def get_id_s(self):
@@ -29,35 +35,29 @@ class Store:
     def set_items_store(self, items_store):
         self.__items_store = items_store
 
+    def get_x_store(self):
+        return self.__x
+
+    def set_x_store(self, x):
+        self.__x = x
+
+    def get_y_store(self):
+        return self.__y
+
+    def set_y_store(self, y):
+        self.__y = y
+
     def add_item(self, item, count):
         self.__items_store[item] = count
 
     def send_request(self, item, provider, count):
-        if item in self.__items_store:
-            if item in provider.get_item_provider():
-                provider_quantity = provider.get_item_provider()[item]
-                if provider_quantity >= count:
-                    provider.get_item_provider()[item] -= count
-                    self.__items_store[item] += count
-                    print(f"Товар {item.name} добавлен в магазин в количестве {count}")
-                else:
-                    print(f"Ошибка: Недостаточное количество товара {item.name} у поставщика")
-            else:
-                print(f"Ошибка: Товар {item.name} отсутствует у поставщика")
-        else:
-            print(f"Ошибка: Товар {item.name} отсутствует в магазине")
+        if item not in self.__items_store:
+            print(f"Запрашиваем товар {item.name} у поставщика в кол-ве {count}")
+            provider.send_order(item, count)
 
-    def update_stocks_store(self, item, count):
-        if item in self.__items_store:
-            self.__items_store[item] += count
-            print(f"Обновлено количество товара {item.name} в магазине на {count}")
-        else:
-            print(f"Ошибка: Товар {item.name} не найден в магазине")
-
-
-
-    def take_order(self):
+    def take_order(self, order):
         pass
+
 
     def set_storekeeper(self):
         pass
