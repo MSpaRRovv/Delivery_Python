@@ -47,7 +47,7 @@ class Storekeeper(Worker):
         super().__init__(name, job_place)
 
     def get_order(self, order, store):
-       pass
+       print("")
 
     def get_shift(self):
         shift_hours = int(input("Введите количество часов: "))
