@@ -3,7 +3,6 @@ from Order import Order
 import uuid
 
 
-
 class Store:
     def __init__(self, name):
         self.__id_s = str(uuid.uuid4())
@@ -58,15 +57,16 @@ class Store:
             provider.send_order(item, count)
 
     def take_order(self, order):
-        pass
-
         order.status = "processing"
         print(f"Статус заказа: {order.status}")
 
 
 
-    def set_storekeeper(self):
+
+    def set_storekeeper(self,order):
         pass
+
+
 
     def set_courier(self):
         pass

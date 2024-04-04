@@ -10,10 +10,6 @@ class User:
         self.__y = input("Введите координаты Y: ")
         self.__coordinates = (self.__x, self.__y)
 
-    def __init__(self, username, user_id, coordinates):
-        self.__username = username
-        self.__user_id = user_id
-        self.__coordinates = coordinates
 
 
     def get_username(self):
@@ -48,7 +44,7 @@ class User:
         self.__y = y
 
     def make_order(self):
-        item = input('Введите товар, который хотите заказать: ')
+        item: str = input('Введите товар, который хотите заказать: ')
         count = int(input('Введите количество товара, который хотите заказать: '))
         order_id = int(uuid.uuid4())
         status = "created"
