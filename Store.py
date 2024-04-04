@@ -57,16 +57,11 @@ class Store:
             provider.send_order(item, count)
 
     def take_order(self, order):
-        order.status = "processing"
+        order.status = "accepted"
         print(f"Статус заказа: {order.status}")
 
-
-
-
-    def set_storekeeper(self,order):
+    def set_storekeeper(self, order):
         pass
-
-
 
     def set_courier(self):
         pass

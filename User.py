@@ -50,8 +50,9 @@ class User:
         status = "created"
         created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         new_order = Order(order_id, status, [(item, count)], created_at, "", "", "")
+        print(f"Статус заказа: {new_order.status}")
         return new_order
-        print(f"Статус заказа: {order.status}")
+
 
     def take_order_user(self):
         pass
