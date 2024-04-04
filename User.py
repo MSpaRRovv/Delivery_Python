@@ -2,12 +2,19 @@ from Order import Order
 from datetime import datetime
 import uuid
 class User:
+
     def __init__(self):
         self.__username = input("Введите имя пользователя: ")
         self.__user_id = str(uuid.uuid4())
         self.__x = input("Введите координаты X: ")
         self.__y = input("Введите координаты Y: ")
         self.__coordinates = (self.__x, self.__y)
+
+    def __init__(self, username, user_id, coordinates):
+        self.__username = username
+        self.__user_id = user_id
+        self.__coordinates = coordinates
+
 
     def get_username(self):
         return self.__username
@@ -27,6 +34,7 @@ class User:
     def set_coordinates(self, coordinates):
         self.__coordinates = coordinates
 
+
     def get_x(self):
         return self.__x
 
@@ -38,6 +46,7 @@ class User:
 
     def set_y(self, y):
         self.__y = y
+
     def make_order(self):
         item = input('Введите товар, который хотите заказать: ')
         count = int(input('Введите количество товара, который хотите заказать: '))

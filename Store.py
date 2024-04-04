@@ -1,5 +1,7 @@
 from Order import Order
+
 import uuid
+
 
 
 class Store:
@@ -57,6 +59,10 @@ class Store:
 
     def take_order(self, order):
         pass
+
+        order.status = "processing"
+        print(f"Статус заказа: {order.status}")
+
 
 
     def set_storekeeper(self):

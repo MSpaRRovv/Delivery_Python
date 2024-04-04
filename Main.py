@@ -25,7 +25,11 @@ courier1 = Courier(1645654, 'Sasha')
 
 storekeeper1 = Storekeeper(18667876, 'Misha')
 
+
 User1 = User()
+
+User1 = User('Andrew', 123456789, (24,24))
+
 order = User1.make_order()
 store1.take_order(order)
 

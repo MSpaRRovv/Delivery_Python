@@ -1,10 +1,17 @@
 from abc import ABC, abstractmethod
+
 import uuid
 
 class Worker(ABC):
     def __init__(self, name):
         self.__id_w = str(uuid.uuid4())
-        self.__name = name
+
+
+
+class Worker(ABC):
+    def __init__(self, id_w, name):
+        self.__id_w = id_w
+
 
     def get_worker_id(self):
         return self.__id_w
